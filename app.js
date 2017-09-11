@@ -1,9 +1,10 @@
 function onReady() {
-  const addToDForm  = document.getElementById('addToDForm');
-  const newToDoText = document.getElementById('newToDoText');
-  const toDoList    = document.getElementById('toDoList');
+  const addToDoForm   = document.getElementById('addToDoForm');
+  const newToDoText   = document.getElementById('newToDoText');
+  const toDoList      = document.getElementById('toDoList');
+  const deleteButton  = document.getElementById('deleteButton');
 
-  addToDForm.addEventListener('submit', (event) => {
+  addTodoForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     //get the text
@@ -14,6 +15,9 @@ function onReady() {
 
     //create a new input for the checkbox
     let checkbox = document.createElement('input');
+
+    //create a delete button
+    let deleteButton = document.createElement('input');
 
     //set the input's type to checkbox
     checkbox.type = "checkbox";
@@ -30,22 +34,14 @@ function onReady() {
     //empty the input
     newToDoText.value = '';
 
-  /*  //create a delete button
-    let deleteButton = document.createElement('button');
-
-    //set delete button type
-    deleteButton.type = "reset";
-
-    //set delete button input
-    deleteButton.textContent = "Delete";
-
-    //deletes todos no longer needed
-    deleteButton.removeChild(newLi);
-*/
+    deleteButton.onClick = function() {
+      
     }
 
   });
 }
+
+
 
 window.onload = function() {
   alert("The window has loaded!");
