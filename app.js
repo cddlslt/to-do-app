@@ -30,7 +30,7 @@ function onReady() {
     //empty the input
     newToDoText.value = '';
 
-    //create a delete button
+  /*  //create a delete button
     let deleteButton = document.createElement('button');
 
     //set delete button type
@@ -41,7 +41,7 @@ function onReady() {
 
     //deletes todos no longer needed
     deleteButton.removeChild(newLi);
-
+*/
     }
 
   });
