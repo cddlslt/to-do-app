@@ -20,16 +20,22 @@ function onReady() {
     toDoList.innerHTML = '';
 
     toDos.forEach(function(toDo){
-      var newLi     = document.createElement('li');
-      var checkbox  = document.createElement('input');
-      checkbox.type = "checkbox";
+      var newLi         = document.createElement('li');
+      var checkbox      = document.createElement('input');
+      var deleteButton  = document.createElement('button');
+      checkbox.type     = "checkbox";
+      deleteButton.type = "button";
 
-      newLi.innerHTML = toDo.title;
+      newLi.innerHTML         = toDo.title;
+      deleteButton.innerHTML  = "Delete";
 
-      //why the change in case?  this isn't present anywhere else
-      //case was changed in next step, must be mistake @bloc
       toDoList.appendChild(newLi);
       newLi.appendChild(checkbox);
+      newLi.appendChild(deleteButton);
+
+      deleteButton.addEventListener('click', function(event) {
+        toDoList.removeChild(newLi);
+      });
     });
   }
 
@@ -38,11 +44,6 @@ function onReady() {
     createNewToDo();
   });
 
-  /*why is renderTheUI recognized as a function? it has not yet been
-  declared anywhere
-  Also todos is different case that toDos.  Intentional? Affect functionality?
-  Found error at l46. Case was wrong. Corrected, loading correctly.
-  */
   renderTheUI(toDos);
 }
 
