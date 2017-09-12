@@ -1,54 +1,52 @@
 function onReady() {
-  const addToDoForm   = document.getElementById('addToDoForm');
-  const newToDoText   = document.getElementById('newToDoText');
-  const toDoList      = document.getElementById('toDoList');
-  const deleteButton  = document.getElementById('deleteButton');
+  var toDos = [];
+  var addTodoForm = document.getElementById('addTodoForm');
 
-  addTodoForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    //get the text
-    let title = newToDoText.value;
-
-    //create a new li
-    let newLi = document.createElement('li');
-
-    //create a new input for the checkbox
-    let checkbox = document.createElement('input');
-
-    //create a delete button
-    let deleteButton = document.createElement('button');
-
-    //set the input's type to checkbox
-    checkbox.type = "checkbox";
-
-    deleteButton.type = "button";
-
-    //set delete text to button
-    deleteButton.value = "Delete!";
-
-    //set the title
-    newLi.textContent = title;
-
-    //attach it to the ul
-    toDoList.appendChild(newLi);
-
-    //attach the checkbox to the li
-    newLi.appendChild(checkbox);
-
-    //empty the input
+  function createNewToDo() {
+    var newToDoText = document.getElementById('newToDoText');
+    toDos.push({
+      //property: value
+      title: newToDoText.value,
+      complete: false;
+    });
     newToDoText.value = '';
 
-    deleteButton.onClick = function() {
+    renderTheUI(toDos);
+  }
 
-    }
+  function renderTheUI(toDos) {
+    var toDoList = document.getElementById('toDoList');
 
+    toDoList.innerHTML = '';
+
+    toDos.forEach(function(toDo){
+      var newLi     = document.createElement('li');
+      var checkbox  = document.createElement('input');
+      checkbox.type = "checkbox";
+
+      newLi.innerHTML = toDo.title;
+
+      //why the change in case?  this isn't present anywhere else
+      //case was changed in next step, must be mistake @bloc
+      toDoList.appendChild(newLi);
+      newLi.appendChild(checkbox);
+    });
+  }
+
+  addTodoForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    createNewToDo();
   });
+
+  /*why is renderTheUI recognized as a function? it has not yet been
+  declared anywhere
+  Also todos is different case that toDos.  Intentional? Affect functionality?
+  */
+  renderTheUI(todos);
 }
 
 
 
 window.onload = function() {
-  alert("The window has loaded!");
   onReady();
 };
