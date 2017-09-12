@@ -17,10 +17,15 @@ function onReady() {
     let checkbox = document.createElement('input');
 
     //create a delete button
-    let deleteButton = document.createElement('input');
+    let deleteButton = document.createElement('button');
 
     //set the input's type to checkbox
     checkbox.type = "checkbox";
+
+    deleteButton.type = "button";
+
+    //set delete text to button
+    deleteButton.value = "Delete!";
 
     //set the title
     newLi.textContent = title;
@@ -35,7 +40,7 @@ function onReady() {
     newToDoText.value = '';
 
     deleteButton.onClick = function() {
-      
+
     }
 
   });
