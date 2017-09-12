@@ -7,7 +7,7 @@ function onReady() {
     toDos.push({
       //property: value
       title: newToDoText.value,
-      complete: false;
+      complete: false,
     });
     newToDoText.value = '';
 
@@ -41,8 +41,9 @@ function onReady() {
   /*why is renderTheUI recognized as a function? it has not yet been
   declared anywhere
   Also todos is different case that toDos.  Intentional? Affect functionality?
+  Found error at l46. Case was wrong. Corrected, loading correctly.
   */
-  renderTheUI(todos);
+  renderTheUI(toDos);
 }
 
 
